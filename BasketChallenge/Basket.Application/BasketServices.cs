@@ -26,7 +26,7 @@ public class BasketService
     public async Task<bool> AddItemAsync(Guid basketId, int productId, int qty, CancellationToken ct = default)
     {
         var product = await _products.GetByIdAsync(productId, ct);
-        if (product is null || product.Rank > 100) return false;            // top-100 rule
+        if (product is null || product.Rank > 100) return false;
 
         var basket = _repo.Get(basketId);
         if (basket is null) return false;
